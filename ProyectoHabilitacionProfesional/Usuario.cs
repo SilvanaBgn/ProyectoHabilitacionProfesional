@@ -1,0 +1,134 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace ProyectoHabilitacionProfesional
+{
+    public class Usuario
+    {
+        /// <summary>
+        /// ID del usuario
+        /// </summary>
+        private int idUsuario;
+
+        /// <summary>
+        /// Nombre de la cuenta del usuario
+        /// </summary>
+        private string iNombreUsuario;
+
+        /// <summary>
+        /// Clave de la cuenta del usuario
+        /// </summary>
+        private string iClaveUsuario;
+
+        /// <summary>
+        /// Correo electrónico del usuario
+        /// </summary>
+        private string iCorreoElectronico;
+
+        /// <summary>
+        /// Lista de los elementos buscados por el usuario
+        /// </summary>
+        private List<Buscado> iListaBuscados;
+
+        /// <summary>
+        /// Lista de las redes sociales del usuario
+        /// </summary>
+        private List<RedSocial> iListaRedesSociales;
+
+        /// <summary>
+        /// Lista de los entretenimientos del usuario
+        /// </summary>
+        private List<Entretenimiento> iListaEntretenimientos;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="pNombre">Nombre de la cuenta del usuario</param>
+        /// <param name="pClave">Clave de la cuenta del usuario</param>
+        /// <param name="pMail">Correo electrónico del usuario</param>
+        public Usuario(string pNombre, string pClave, string pMail)
+        {
+            this.iNombreUsuario = pNombre;
+            this.iClaveUsuario = pClave;
+
+            //Usar método privado Email_bien_escrito() para validar la exp reg
+            //si no pasa la validación, LANZAR EXCEPCIÓN
+            this.iCorreoElectronico = pMail;
+        }
+
+        #region Métodos públicos
+        
+        #endregion
+
+        #region Métodos privados
+        /// <summary>
+        /// Método privado para validar si el correo electrónico es válido estructuralmente.
+        /// </summary>
+        /// <returns>Devuelve true si es el e-mail indicado está bien escrito, sino false</returns>
+        private Boolean Email_bien_escrito(String pEmail)
+        {
+            String expresion;
+            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(pEmail, expresion))
+            {
+                if (Regex.Replace(pEmail, expresion, String.Empty).Length == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region Properties
+        public string NombreCuentaUsuario
+        {
+            get { return this.iNombreUsuario; }
+            set { this.iNombreUsuario = value; }
+        }
+
+        public string ClaveCuentaUsuario
+        {
+            get { return this.iClaveUsuario; }
+            set { this.iClaveUsuario = value; }
+        }
+
+        public string CorreoElectronico
+        {
+            get { return this.iCorreoElectronico; }
+            set { this.iCorreoElectronico = value; }
+        }
+
+        public int IdUsuario
+        {
+            get { return this.idUsuario; }
+        }
+
+        public List<Buscado> Buscados
+        {
+            get { return this.iListaBuscados; }
+        }
+
+        public List<Entretenimiento> Entretenimientos
+        {
+            get { return this.iListaEntretenimientos; }
+        }
+
+        public List<RedSocial> RedesSociales
+        {
+            get { return this.iListaRedesSociales; }
+        }
+        #endregion
+    }
+}
