@@ -4,23 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoHabilitacionProfesional
+namespace Controlador
 {
-    class FachadaArchivo
+    class ControladorArchivo
     {
         private List<Archivo> iListaArchivos;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public FachadaArchivo()
+        public ControladorArchivo()
         {
             this.iListaArchivos = new List<Archivo>();
         }
 
-        public void NuevoArchivo (string pUnaRuta, TipoArchivo pTipo)
+        public void NuevoArchivo (string pUnaRuta)
         {
-            this.iListaArchivos.Add(new Archivo(pUnaRuta, DateTime.Today, pTipo));
+            this.iListaArchivos.Add(new Archivo(pUnaRuta, DateTime.Today, ObtenerTipoArchivo()));
+        }
+
+        private TipoArchivo ObtenerTipoArchivo()
+        {
+            
+            return new TipoArchivo();
         }
 
         public void EliminarArchivo (Archivo pUnArchivo)

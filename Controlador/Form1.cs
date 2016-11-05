@@ -15,6 +15,8 @@ namespace ProyectoHabilitacionProfesional
         public Form1()
         {
             InitializeComponent();
+            this.Text = "";
+            this.FormBorderStyle = FormBorderStyle.None;
         }
     }
 }

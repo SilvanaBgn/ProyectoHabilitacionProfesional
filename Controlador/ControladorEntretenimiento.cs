@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.Net;
+using System.IO;
+using Entidad;
 
-namespace ProyectoHabilitacionProfesional
+namespace Controlador
 {
-    public class FachadaEntretenimiento
+    public class ControladorEntretenimiento
     {
         private List<Entretenimiento> iListaEntretenimientos;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public FachadaEntretenimiento()
+        public ControladorEntretenimiento()
         {
             this.iListaEntretenimientos = new List<Entretenimiento>();
         }
@@ -47,5 +51,15 @@ namespace ProyectoHabilitacionProfesional
             return this.iListaEntretenimientos.Find(x => x.id == pIdEntretenimiento);
         }
 
+        /// <summary>
+        /// Permite acceder a la página web del entretenimiento
+        /// </summary>
+        /// <param name="idEnt">identificador del entretenimiento que se quiere acceder</param>
+        public void AccederEntretenimiento(int idEnt)
+        {
+            String baseUri = "http://www.google.com.ar";
+            HttpWebRequest connection =
+            (HttpWebRequest)HttpWebRequest.Create(baseUri);
+        }
     }
 }

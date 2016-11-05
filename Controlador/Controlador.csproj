@@ -46,14 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Archivo.cs" />
-    <Compile Include="Buscado.cs" />
-    <Compile Include="Categoria.cs" />
-    <Compile Include="Entretenimiento.cs" />
-    <Compile Include="FachadaArchivo.cs" />
-    <Compile Include="FachadaRedSocial.cs" />
-    <Compile Include="FachadaEntretenimiento.cs" />
-    <Compile Include="FachadaUsuario.cs" />
+    <Compile Include="ControladorArchivo.cs" />
+    <Compile Include="ControladorRedSocial.cs" />
+    <Compile Include="ControladorEntretenimiento.cs" />
+    <Compile Include="ControladorUsuario.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,13 +58,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RedSocial.cs" />
-    <Compile Include="TipoArchivo.cs" />
-    <Compile Include="TipoBuscado.cs" />
-    <Compile Include="TipoCategoria.cs" />
-    <Compile Include="TipoEntretenimiento.cs" />
-    <Compile Include="Tutorial.cs" />
-    <Compile Include="Usuario.cs" />
+    <Compile Include="VentanaSinBordes.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -90,6 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidad\Entidad.csproj">
+      <Project>{fe566ea8-c2db-4216-b70d-2cd082d883ca}</Project>
+      <Name>Entidad</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

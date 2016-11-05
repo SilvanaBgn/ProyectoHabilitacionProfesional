@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entidad;
 
-namespace ProyectoHabilitacionProfesional
+namespace Controlador
 {
-    class FachadaUsuario
+    class ControladorUsuario
     {
-        private List<Usuario> iListaUsuarios;
+        private List<Usuario> iListaUsuarios; //esto va a ser el RepositorioUsuarios
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public FachadaUsuario()
+        public ControladorUsuario()
         {
             this.iListaUsuarios = new List<Usuario>();
         }
@@ -65,5 +66,6 @@ namespace ProyectoHabilitacionProfesional
             return this.iListaUsuarios.Find(x => x.IdUsuario == pIdUSR);
         }
 
+        
     }
 }

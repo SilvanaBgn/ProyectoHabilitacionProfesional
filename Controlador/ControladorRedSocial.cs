@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoHabilitacionProfesional
+namespace Controlador
 {
-    public class FachadaRedSocial
+    public class ControladorRedSocial
     {
         private List<RedSocial> iListaRedesSociales;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public FachadaRedSocial()
+        public ControladorRedSocial()
         {
             this.iListaRedesSociales = new List<RedSocial>();
         }
@@ -31,10 +31,10 @@ namespace ProyectoHabilitacionProfesional
         }
 
         /// <summary>
-        /// Elimina el usuario de la red social indicada
+        /// Elimina la red social indicada del usuario
         /// </summary>
         /// <param name="pIdRS">Id de la red social que se quiere eliminar</param>
-        public void EliminarUsuario(int pIdRS)
+        public void EliminarRedSocial(int pIdRS)
         {
             this.iListaRedesSociales.Remove
                 (this.BuscarRedSocial(pIdRS));
@@ -50,5 +50,13 @@ namespace ProyectoHabilitacionProfesional
             return this.iListaRedesSociales.Find(x => x.IdRedSocial == pIdRS);
         }
 
+        /// <summary>
+        /// Permite acceder a la cuenta de una red social 
+        /// </summary>
+        /// <param name="idRS">id de la red social, la cual incluye los datos necesarios para acceder a la cuenta</param>
+        public void AccederRedSocial(int idRS)
+        {
+            //
+        }
     }
 }
