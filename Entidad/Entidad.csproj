@@ -7,9 +7,9 @@
     <ProjectGuid>{FE566EA8-C2DB-4216-B70D-2CD082D883CA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Entidad</RootNamespace>
-    <AssemblyName>Entidad</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <RootNamespace>ENTIDAD</RootNamespace>
+    <AssemblyName>ENTIDAD</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
@@ -43,19 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Archivo.cs" />
-    <Compile Include="Buscado.cs" />
-    <Compile Include="Categoria.cs" />
-    <Compile Include="Entretenimiento.cs" />
+    <Compile Include="Archivo\Archivo.cs" />
+    <Compile Include="Archivo\TipoArchivo.cs" />
+    <Compile Include="Buscado\Buscado.cs" />
+    <Compile Include="Buscado\TipoBuscado.cs" />
+    <Compile Include="Categoria\Categoria.cs" />
+    <Compile Include="Categoria\TipoCategoria.cs" />
+    <Compile Include="Entretenimiento\Entretenimiento.cs" />
+    <Compile Include="Entretenimiento\TipoEntretenimiento.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RedSocial.cs" />
-    <Compile Include="TipoArchivo.cs" />
-    <Compile Include="TipoBuscado.cs" />
-    <Compile Include="TipoCategoria.cs" />
-    <Compile Include="TipoEntretenimiento.cs" />
+    <Compile Include="RedSocial\RedSocial.cs" />
     <Compile Include="Tutorial.cs" />
-    <Compile Include="Usuario.cs" />
+    <Compile Include="Usuario\Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
