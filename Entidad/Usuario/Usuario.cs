@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace ProyectoHabilitacionProfesional
+namespace ENTIDAD
 {
     public class Usuario
     {
@@ -30,21 +30,6 @@ namespace ProyectoHabilitacionProfesional
         private string iCorreoElectronico;
 
         /// <summary>
-        /// Lista de los elementos buscados por el usuario
-        /// </summary>
-        private List<Buscado> iListaBuscados;
-
-        /// <summary>
-        /// Lista de las redes sociales del usuario
-        /// </summary>
-        private List<RedSocial> iListaRedesSociales;
-
-        /// <summary>
-        /// Lista de los entretenimientos del usuario
-        /// </summary>
-        private List<Entretenimiento> iListaEntretenimientos;
-
-        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="pNombre">Nombre de la cuenta del usuario</param>
@@ -61,8 +46,7 @@ namespace ProyectoHabilitacionProfesional
         }
 
         #region Métodos públicos
-       
-
+        
         #endregion
 
         #region Métodos privados
@@ -114,21 +98,7 @@ namespace ProyectoHabilitacionProfesional
         public int IdUsuario
         {
             get { return this.idUsuario; }
-        }
-
-        public List<Buscado> Buscados
-        {
-            get { return this.iListaBuscados; }
-        }
-
-        public List<Entretenimiento> Entretenimientos
-        {
-            get { return this.iListaEntretenimientos; }
-        }
-
-        public List<RedSocial> RedesSociales
-        {
-            get { return this.iListaRedesSociales; }
+            set { this.IdUsuario = value; }
         }
         #endregion
     }
