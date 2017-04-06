@@ -54,7 +54,7 @@ namespace ENTIDAD
         /// Método privado para validar si el correo electrónico es válido estructuralmente.
         /// </summary>
         /// <returns>Devuelve true si es el e-mail indicado está bien escrito, sino false</returns>
-        private Boolean Email_bien_escrito(String pEmail)
+        private Boolean EmailBienEscrito(String pEmail)
         {
             String expresion;
             expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
