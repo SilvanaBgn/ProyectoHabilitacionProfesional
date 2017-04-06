@@ -43,7 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControladorArchivo.cs" />
+    <Compile Include="ControladorBuscado.cs" />
+    <Compile Include="ControladorCategoria.cs" />
+    <Compile Include="ControladorEntretenimiento.cs" />
     <Compile Include="ControladorFachada.cs" />
+    <Compile Include="ControladorRedSocial.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -54,6 +59,10 @@
     <ProjectReference Include="..\ENTIDAD\ENTIDAD.csproj">
       <Project>{6e966190-0693-4eac-ac81-6cb95d5f6e88}</Project>
       <Name>ENTIDAD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MODELO\MODELO.csproj">
+      <Project>{28b8acc4-47a2-45b7-ab21-01fdf9b2dda1}</Project>
+      <Name>MODELO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
