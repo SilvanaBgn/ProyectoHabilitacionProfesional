@@ -21,6 +21,7 @@ namespace CONTROLADOR
             this.ModeloFachada=new ModeloFachada();
         }
 
+
         #region Red Social
         /// <summary>
         /// Crea una nueva red social
