@@ -9,8 +9,28 @@ namespace MODELO
 {
     public class ModeloFachada : IModeloFachada
     {
-        private UnidadDeTrabajo iUnidadDeTrabajo = new UnidadDeTrabajo();
-     
+        private UnidadDeTrabajo iUnidadDeTrabajo = null;
+        private static ModeloFachada instancia = null;
+
+
+        /// <summary>
+        /// Método de Singleton para obtener la instancia.
+        /// </summary>
+        /// <returns></returns>
+        public static ModeloFachada GetInstancia()
+        {
+            if (instancia == null)
+                instancia = new ModeloFachada();
+
+            return instancia;
+        }
+
+        //Constructor de la clase ModeloFachada
+        private ModeloFachada()
+        {
+            this.iUnidadDeTrabajo = new UnidadDeTrabajo();
+        }
+
         #region Archivo
         /// <summary>
         /// Crea una nueva instancia de la clase Archivo
