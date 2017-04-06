@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidad", "Entidad\Entidad.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controlador", "Controlador\Controlador.csproj", "{929B4914-E41C-4A86-9395-4E79E9B4A030}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MODELO", "..\Feno\ProyectoHabilitacionProfesional\MODELO\MODELO.csproj", "{28B8ACC4-47A2-45B7-AB21-01FDF9B2DDA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MODELO", "MODELO\MODELO.csproj", "{28B8ACC4-47A2-45B7-AB21-01FDF9B2DDA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
