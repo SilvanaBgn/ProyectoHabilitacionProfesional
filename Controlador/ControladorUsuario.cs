@@ -36,8 +36,8 @@ namespace CONTROLADOR
         {
             Usuario usuario = ModeloFachada.GetInstancia().BuscarUsuario(pIdUSR);
             ModeloFachada.GetInstancia().EliminarUsuario(usuario);
-        }
 
+        }
         /// <summary>
         /// Busca el usuario indicado
         /// </summary>
