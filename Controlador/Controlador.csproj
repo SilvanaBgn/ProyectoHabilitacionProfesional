@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControladorArchivo.cs" />
+    <Compile Include="ControladorBuscado.cs" />
+    <Compile Include="ControladorCategoria.cs" />
+    <Compile Include="ControladorEntretenimiento.cs" />
+    <Compile Include="ControladorRedSocial.cs" />
     <Compile Include="ControladorUsuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

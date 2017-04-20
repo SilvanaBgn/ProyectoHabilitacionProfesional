@@ -23,6 +23,11 @@ namespace ENTIDAD
         private TipoEntretenimiento iTipoEntretenimiento;
 
         /// <summary>
+        /// ID del Usuario 
+        /// </summary>
+        public int UsuarioId { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public Entretenimiento(Uri pDireccion, TipoEntretenimiento pTipo)

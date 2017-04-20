@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ENTIDAD;
+using MODELO;
 
 namespace CONTROLADOR
 {
@@ -15,7 +16,7 @@ namespace CONTROLADOR
         /// <param name="pUnArchivo">archivo a crear</param>
         public void NuevoArchivo(Archivo pUnArchivo)
         {
-            this.ModeloFachada.CrearArchivo(pUnArchivo);
+            ModeloFachada.GetInstancia().CrearArchivo(pUnArchivo);
         }
 
         /// <summary>
@@ -24,8 +25,8 @@ namespace CONTROLADOR
         /// <param name="pIdArchivo">id del archivo que se quiere eliminar</param>
         public void EliminarArchivo(int pIdArchivo)
         {
-            Archivo archivo = this.ModeloFachada.BuscarArchivo(pIdArchivo);
-            this.ModeloFachada.EliminarArchivo(archivo);
+            Archivo archivo = ModeloFachada.GetInstancia().BuscarArchivo(pIdArchivo);
+            ModeloFachada.GetInstancia().EliminarArchivo(archivo);
         }
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace CONTROLADOR
         /// <returns>Devuelve el archivo buscado</returns>
         public Archivo BuscarArchivo(int pIdArchivo)
         {
-            return this.ModeloFachada.BuscarArchivo(pIdArchivo);
+            return ModeloFachada.GetInstancia().BuscarArchivo(pIdArchivo);
         }
 
         ///// <summary>
@@ -44,7 +45,7 @@ namespace CONTROLADOR
         //public List<Archivo> BuscarArchivo(string cadena)
         //{
         //    //VERR  HACER
-        //    //return this.ModeloFachada.BuscarArchivo(cadena);            
+        //    //return ModeloFachada.GetInstancia().BuscarArchivo(cadena);            
         //}
     }
 }

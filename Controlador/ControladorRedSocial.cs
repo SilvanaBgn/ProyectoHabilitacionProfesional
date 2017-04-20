@@ -16,7 +16,7 @@ namespace CONTROLADOR
         /// <param name="pRedSocial">Red social a crear</param>
         public void NuevaRedSocial(RedSocial pRedSocial)
         {
-            this.ModeloFachada.CrearRedSocial(pRedSocial);
+            ModeloFachada.GetInstancia().CrearRedSocial(pRedSocial);
         }
 
         /// <summary>
@@ -25,8 +25,8 @@ namespace CONTROLADOR
         /// <param name="pIdRS">Id de la red social que se quiere eliminar</param>
         public void EliminarRedSocial(int pIdRS)
         {
-            RedSocial red = this.ModeloFachada.BuscarRedSocial(pIdRS);
-            this.ModeloFachada.EliminarRedSocial(red);
+            RedSocial red = ModeloFachada.GetInstancia().BuscarRedSocial(pIdRS);
+            ModeloFachada.GetInstancia().EliminarRedSocial(red);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace CONTROLADOR
         /// <returns>Devuelve la red social buscada</returns>
         public RedSocial BuscarRedSocial(int pIdRS)
         {
-            return this.ModeloFachada.BuscarRedSocial(pIdRS);
+            return ModeloFachada.GetInstancia().BuscarRedSocial(pIdRS);
         }
 
         /// <summary>

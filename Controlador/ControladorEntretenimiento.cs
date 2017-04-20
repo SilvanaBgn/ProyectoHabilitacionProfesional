@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ENTIDAD;
+using MODELO;
 
 namespace CONTROLADOR
 {
@@ -15,7 +16,7 @@ namespace CONTROLADOR
         /// <param name="pEntretenimiento">Entretenimiento a crear</param>
         public void NuevoEntretenimiento(Entretenimiento pEntretenimiento)
         {
-            this.ModeloFachada.CrearEntretenimiento(pEntretenimiento);
+            ModeloFachada.GetInstancia().CrearEntretenimiento(pEntretenimiento);
         }
 
         /// <summary>
@@ -24,8 +25,8 @@ namespace CONTROLADOR
         /// <param name="pIdEntretenimiento">Id del entretenimiento</param>
         public void EliminarEntretenimiento(int pIdEntretenimiento)
         {
-            Entretenimiento ent = this.ModeloFachada.BuscarEntretenimiento(pIdEntretenimiento);
-            this.ModeloFachada.EliminarEntretenimiento(ent);
+            Entretenimiento ent = ModeloFachada.GetInstancia().BuscarEntretenimiento(pIdEntretenimiento);
+            ModeloFachada.GetInstancia().EliminarEntretenimiento(ent);
         }
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace CONTROLADOR
         /// <returns></returns>
         public Entretenimiento BuscarEntretenimiento(int pIdEntretenimiento)
         {
-            return this.ModeloFachada.BuscarEntretenimiento(pIdEntretenimiento);
+            return ModeloFachada.GetInstancia().BuscarEntretenimiento(pIdEntretenimiento);
         }
 
         /// <summary>

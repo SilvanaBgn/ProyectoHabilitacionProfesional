@@ -15,7 +15,7 @@ namespace CONTROLADOR
         /// <param name="pCategoria">Categoria a crear</param>
         public void NuevaCategoria(Categoria pCategoria)
         {
-            this.ModeloFachada.CrearCategoria(pCategoria);
+            ModeloFachada.GetInstancia().CrearCategoria(pCategoria);
         }
 
         /// <summary>
@@ -24,8 +24,8 @@ namespace CONTROLADOR
         /// <param name="pIdBuscado">Id de categoria que se quiere eliminar</param>
         public void EliminarCategoria(int pId)
         {
-            Categoria cat = this.ModeloFachada.BuscarCategoria(pId);
-            this.ModeloFachada.EliminarCategoria(cat);
+            Categoria cat = ModeloFachada.GetInstancia().BuscarCategoria(pId);
+            ModeloFachada.GetInstancia().EliminarCategoria(cat);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace CONTROLADOR
         /// <returns>Devuelve la categoria encontrada</returns>
         public Categoria BuscarCategoria(int pIdRS)
         {
-            return this.ModeloFachada.BuscarCategoria(pIdRS);
+            return ModeloFachada.GetInstancia().BuscarCategoria(pIdRS);
         }
     }
 }

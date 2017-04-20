@@ -34,6 +34,12 @@ namespace ENTIDAD
         private string iNombreRedSocial;
 
         /// <summary>
+        /// ID del Usuario 
+        /// </summary>
+        public int UsuarioId { get; set; }
+
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public RedSocial(Uri pDir, string pNomCuenta, string pClaveCuenta, string pNomRS)

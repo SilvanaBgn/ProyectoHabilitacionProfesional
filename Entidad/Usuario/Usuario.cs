@@ -30,6 +30,22 @@ namespace ENTIDAD
         private string iCorreoElectronico;
 
         /// <summary>
+        /// Lista de entretenimientos pertenecientes al Usuario
+        /// </summary>
+        public virtual ICollection<Entretenimiento> iListEntretenimientos { get; set; }
+
+        /// <summary>
+        /// Lista de Redes sociales pertenecientes al Usuario
+        /// </summary>
+        public virtual ICollection<RedSocial> iListRedesSociales { get; set; }
+
+        /// <summary>
+        /// Lista de Buscados pertenecientes al Usuario
+        /// </summary>
+        public virtual ICollection<Buscado> iListBuscados { get; set; }
+
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="pNombre">Nombre de la cuenta del usuario</param>
@@ -58,21 +74,15 @@ namespace ENTIDAD
         {
             String expresion;
             expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            bool resultado = false;
             if (Regex.IsMatch(pEmail, expresion))
             {
                 if (Regex.Replace(pEmail, expresion, String.Empty).Length == 0)
                 {
-                    return true;
-                }
-                else
-                {
-                    return false;
+                    resultado = true;
                 }
             }
-            else
-            {
-                return false;
-            }
+            return resultado;
         }
         #endregion
 

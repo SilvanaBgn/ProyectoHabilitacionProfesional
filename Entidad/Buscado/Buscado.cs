@@ -29,6 +29,13 @@ namespace ENTIDAD
         private TipoBuscado iTipoBuscado;
 
         /// <summary>
+        /// ID del Usuario 
+        /// </summary>
+        public int UsuarioId { get; set; }
+
+
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="pCadenaBuscada">cadena que se ha buscado</param>

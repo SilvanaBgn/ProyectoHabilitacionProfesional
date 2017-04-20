@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ENTIDAD;
+using MODELO;
 
 namespace CONTROLADOR
 {
@@ -15,7 +16,7 @@ namespace CONTROLADOR
         /// <param name="pBuscado">Buscado a crear</param>
         public void NuevoBuscado(Buscado pBuscado)
         {
-            this.ModeloFachada.CrearBuscado(pBuscado);
+            ModeloFachada.GetInstancia().CrearBuscado(pBuscado);
         }
 
         /// <summary>
@@ -24,8 +25,8 @@ namespace CONTROLADOR
         /// <param name="pIdBuscado">Id del buscado que se quiere eliminar</param>
         public void EliminarBuscado(int pIdBuscado)
         {
-            Buscado bus = this.ModeloFachada.BuscarBuscado(pIdBuscado);
-            this.ModeloFachada.EliminarBuscado(bus);
+            Buscado bus = ModeloFachada.GetInstancia().BuscarBuscado(pIdBuscado);
+            ModeloFachada.GetInstancia().EliminarBuscado(bus);
         }
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace CONTROLADOR
         /// <returns>Devuelve el Buscado encontrado</returns>
         public Buscado BuscarBuscado(int pIdRS)
         {
-            return this.ModeloFachada.BuscarBuscado(pIdRS);
+            return ModeloFachada.GetInstancia().BuscarBuscado(pIdRS);
         }
     }
 }
