@@ -51,6 +51,7 @@
     <Compile Include="Categoria\TipoCategoria.cs" />
     <Compile Include="Entretenimiento\Entretenimiento.cs" />
     <Compile Include="Entretenimiento\TipoEntretenimiento.cs" />
+    <Compile Include="MotorBusqueda\MotorBusqueda.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedSocial\RedSocial.cs" />

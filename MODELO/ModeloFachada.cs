@@ -175,6 +175,7 @@ namespace MODELO
 
         #endregion
 
+        //PREGUNTAR SI BORRAR
         #region Buscado
         /// <summary>
         /// Almacena una instancia de una busqueda
@@ -206,6 +207,28 @@ namespace MODELO
         {
             return iUnidadDeTrabajo.RepositorioBuscado.GetByID(pIdBuscado);
 
+        }
+        #endregion //BORRAR
+
+        #region Buscar
+        /// <summary>
+        /// Obtiene un elemnto buscado
+        /// </summary>
+        /// <param name="pMotor"></param>
+        /// <returns>Motor de búsqueda requerido</returns>
+        public MotorBusqueda ObtenerMotor(string pTipoMotor)
+        {
+            List<MotorBusqueda> mLista=((List<MotorBusqueda>)iUnidadDeTrabajo.RepositorioMotorBusqueda.Get(x=>x.Tipo==pTipoMotor));
+            MotorBusqueda mMotor;
+            if (mLista.Count > 0)
+            {
+                mMotor = mLista[0];
+            }
+            else
+            {
+                mMotor = null;
+            }
+            return mMotor;
         }
         #endregion
 

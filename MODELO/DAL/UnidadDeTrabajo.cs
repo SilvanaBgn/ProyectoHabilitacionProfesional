@@ -16,6 +16,7 @@ namespace MODELO
         private RepositorioGenerico<RedSocial> iRedSocialRepository;
         private RepositorioGenerico<Buscado> iBuscadoRepository;
         private RepositorioGenerico<Categoria> iCategoriaRepository;
+        private RepositorioGenerico<MotorBusqueda> iMotorBusquedaRepository;
 
 
         /// <summary>
@@ -108,6 +109,25 @@ namespace MODELO
                 return this.iRedSocialRepository;
             }
         }
+
+        /// <summary>
+        /// Propiedad de Repositorio de Motores de búsqueda
+        /// </summary>
+        public RepositorioGenerico<MotorBusqueda> RepositorioMotorBusqueda
+        {
+            get
+            {
+                if (this.iMotorBusquedaRepository == null)
+                {
+                    this.iMotorBusquedaRepository = new RepositorioGenerico<MotorBusqueda>(context);
+                }
+                return this.iMotorBusquedaRepository;
+            }
+        }
+
+
+
+
 
         /// <summary>
         /// Guardar cambios

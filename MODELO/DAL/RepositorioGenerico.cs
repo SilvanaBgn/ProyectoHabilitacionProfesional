@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,14 +37,28 @@ namespace MODELO
         /// <summary>
         /// Obtener Entidad por ID
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         public virtual TEntity GetByID(object id)
         {
             return dbSet.Find(id);
         }
 
+        /// <summary>
+        /// Método genérico para buscar entidades en la base de datos
+        /// </summary>
+        /// <param name="pFilter">filtro de búsqueda</param>
+        /// <returns>Devuelve una colección de objetos según los filtros de búsqueda</returns>
+        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> pFilter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> pOrderBy = null)
+        {
+            IQueryable<TEntity> query = this.Queryable;
+            if (pFilter != null)
+                query = query.Where(pFilter);
 
+            if (pOrderBy != null)
+                return pOrderBy(query).ToList();
+            else
+                return query.ToList();
+            
+        }
 
         /// <summary>
         /// Inserta entidad 
