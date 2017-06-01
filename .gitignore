@@ -240,3 +240,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/Vista/PruebaBD.resx
+/Vista/PruebaBD.Designer.cs
+/Vista/PruebaBD.cs
