@@ -32,7 +32,7 @@ namespace Vista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //RedSocial mRedSocial = new RedSocial("https://www.facebook.com/",);
+            //RedSocial mRedSocial = new RedSocial("https://www.facebook.com/","Facebook",);
             //this.iControladorRedSocial
         }
     }
