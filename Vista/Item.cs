@@ -13,38 +13,16 @@ namespace Vista
 {
     public partial class Item : UserControl
     {
-        private String iChrome { get; set; } = @"%AppData%\..\Local\Google\Chrome\Application\chrome.exe";
-        private String iRutaArchivo { get; set; } = null;
-        private String iRutaPrograma { get; set; } = null;
-        private Uri iRutaWeb { get; set; } = null;
+        private String iRuta { get; set; }
 
         public Item(String pCatNombre, Image pCatIcono, String pRuta)
         {
             InitializeComponent();
-            if (pRuta.EndsWith(".exe"))
-            {
-                iRutaPrograma = pRuta;
-            }
-            else
-            {
-                iRutaArchivo = pRuta;
-            }
+            if (pRuta != null)
+                this.iRuta = pRuta;
             this.lblItem.Text = pCatNombre;
             this.AjustarLabel(this.lblItem);
             if (pCatIcono!=null)
-                this.btnItem.Image = pCatIcono;
-        }
-
-        public Item(String pCatNombre, Image pCatIcono, Uri pURL)
-        {
-            InitializeComponent();
-            if (pURL!=null)
-            {
-                this.iRutaWeb = pURL;
-            }
-            this.lblItem.Text = pCatNombre;
-            this.AjustarLabel(this.lblItem);
-            if (pCatIcono != null)
                 this.btnItem.Image = pCatIcono;
         }
 
@@ -81,21 +59,11 @@ namespace Vista
 
         private void btnItem_Click(object sender, EventArgs e)
         {
-            if (this.iRutaArchivo != null)
+            if (this.iRuta != null)
             {
-
-            }
-            else if (this.iRutaWeb != null)
-            {
-                //AplicacionWindows.Iniciar("firefox",iRutaWeb.ToString());
-            }
-            else if (this.iRutaPrograma != null)
-            {
-               // AplicacionWindows.Iniciar(iRutaPrograma,null);
-            }
-            else
-            {
-                //error
+                Process proc = new Process();
+                proc.StartInfo.FileName = iRuta;
+                proc.Start();
             }
         }
     }
