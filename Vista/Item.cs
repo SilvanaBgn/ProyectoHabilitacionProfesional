@@ -13,22 +13,35 @@ namespace Vista
 {
     public partial class Item : UserControl
     {
-        private String iRuta { get; set; }
+        public String NombrePublico { get; set; }
+        public String Valor { get; set; }
+        public Image Icono { get; set; }
+        public bool EsCategoria { get; set; }
 
-        public Item(String pCatNombre, Image pCatIcono, String pRuta)
+        public Item()
         {
             InitializeComponent();
-            if (pRuta != null)
-                this.iRuta = pRuta;
-            this.lblItem.Text = pCatNombre;
-            this.AjustarLabel(this.lblItem);
-            if (pCatIcono!=null)
-                this.btnItem.Image = pCatIcono;
+        }
+
+        public Item(String pNombrePublico, string pValor, Image pIcono = null, bool pEsCategoria = false)
+        {
+            InitializeComponent();
+            if (pNombrePublico != null)
+            { 
+                this.NombrePublico = pNombrePublico;
+                this.tbItem.Text = pNombrePublico;
+            }
+            if (pValor != null)
+                this.Valor = pValor;
+            //this.AjustarLabel(this.lblItem);
+            if (pIcono != null)
+                this.btnItem.Image = pIcono;
+            this.EsCategoria = pEsCategoria;
         }
 
         private void Categoria_SizeChanged(object sender, EventArgs e)
         {
-            this.AjustarLabel(this.lblItem);
+            //this.AjustarLabel(this.lblItem);
         }
 
         /// <summary>
@@ -57,13 +70,31 @@ namespace Vista
             }
         }
 
+        public event EventHandler ItemClicked;
+
+        protected virtual void onItemClicked(EventArgs e)
+        {
+            var handler = ItemClicked;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        } 
+
         private void btnItem_Click(object sender, EventArgs e)
         {
-            if (this.iRuta != null)
+            if (this.Valor != null)
             {
-                Process proc = new Process();
-                proc.StartInfo.FileName = iRuta;
-                proc.Start();
+                if (EsCategoria)
+                {
+                    onItemClicked(e);
+                }
+                else
+                {
+                    Process proc = new Process();
+                    proc.StartInfo.FileName = this.Valor;
+                    proc.Start();
+                }
             }
         }
     }

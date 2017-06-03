@@ -147,7 +147,7 @@ namespace MODELO
         /// <param name="pIdUSR">Id del usuario</param>
         public void EliminarUsuario(Usuario pUnUsuario)
         {
-            Usuario iUsuario = iUnidadDeTrabajo.RepositorioUsuario.GetByID(pUnUsuario.IdUsuario);
+            Usuario iUsuario = iUnidadDeTrabajo.RepositorioUsuario.GetByID(pUnUsuario.UsuarioID);
             iUnidadDeTrabajo.RepositorioUsuario.Delete(iUsuario);
             iUnidadDeTrabajo.Save();
         }

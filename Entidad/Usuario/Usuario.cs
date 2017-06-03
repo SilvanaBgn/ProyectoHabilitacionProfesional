@@ -105,10 +105,10 @@ namespace ENTIDAD
             set { this.iCorreoElectronico = value; }
         }
 
-        public int IdUsuario
+        public int UsuarioID
         {
             get { return this.idUsuario; }
-            set { this.IdUsuario = value; }
+            set { this.idUsuario = value; }
         }
         #endregion
     }
