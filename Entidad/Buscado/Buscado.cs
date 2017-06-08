@@ -11,22 +11,22 @@ namespace ENTIDAD
         /// <summary>
         /// Id con la que se identifica la busqueda
         /// </summary>
-        private int idBuscado;
+        public int BuscadoId { get; set; }
 
         /// <summary>
         /// String que representa la cadena que se busco
         /// </summary>
-        private string iCadenaBuscada;
+        public string CadenaBuscada { get; set; }
 
         /// <summary>
         /// Fecha que se hizo la busqueda
         /// </summary>
-        private DateTime iFechaBuscado;
+        public DateTime FechaBuscado { get; set; }
 
         /// <summary>
         /// Tipo del elemento buscado
         /// </summary>
-        private TipoBuscado iTipoBuscado;
+        public TipoBuscado TipoBuscado { get; }
 
         /// <summary>
         /// ID del Usuario 
@@ -34,6 +34,10 @@ namespace ENTIDAD
         public int UsuarioId { get; set; }
 
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Buscado() { }
 
         /// <summary>
         /// Constructor
@@ -42,38 +46,9 @@ namespace ENTIDAD
         /// <param name="pFechaBuscado">fecha de la búsqueda</param>
         public Buscado(string pCadenaBuscada,DateTime pFechaBuscado,TipoBuscado pTipo)
         {
-            this.iCadenaBuscada = pCadenaBuscada;
-            this.iFechaBuscado = pFechaBuscado;
-            this.iTipoBuscado = pTipo;
+            this.CadenaBuscada = pCadenaBuscada;
+            this.FechaBuscado = pFechaBuscado;
+            this.TipoBuscado = pTipo;
         }
-
-        #region Properties
-        /// <summary>
-        /// Propiedad de lectura y escritura de la id de la busqueda
-        /// </summary>
-        public int Id
-        {
-            get { return this.idBuscado; }
-            set { this.idBuscado = value; }
-        }
-        
-        /// <summary>
-        /// Propiedad de lectura y escritura de la fecha de la busqueda
-        /// </summary>
-        public DateTime FechaBuscado
-        {
-            get { return this.iFechaBuscado; }
-            set { this.iFechaBuscado = value;}
-        }
-
-        /// <summary>
-        /// Propiedad de lectura del tipo del elemento buscado
-        /// </summary>
-        public TipoBuscado Tipo
-        {
-            get { return this.iTipoBuscado; }
-        }
-
-        #endregion
     }
 }

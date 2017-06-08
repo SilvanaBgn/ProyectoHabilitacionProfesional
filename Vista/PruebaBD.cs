@@ -32,8 +32,19 @@ namespace Vista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //RedSocial mRedSocial = new RedSocial("https://www.facebook.com/","Facebook",);
-            //this.iControladorRedSocial
+            //Usuario mUsuario = new Usuario("Juan", "123", "juan@gmail.com");
+            //Usuario mUsuario = this.iControladorUsuario.BuscarUsuario(1);
+
+            //RedSocial mRedSocial = new RedSocial("https://www.facebook.com/", "Facebook", "admin", "Juancitoo");
+
+            //mUsuario.ListRedesSociales.Remove(mUsuario.ListRedesSociales[1]);
+
+            ////this.iControladorUsuario.NuevoUsuario(mUsuario);
+            //this.iControladorUsuario.ModificarUsuario(mUsuario);
+            //this.iControladorRedSocial.EliminarRedSocial(2);
+            this.iControladorUsuario.EliminarUsuario(1);
+
+            //this.iControladorRedSocial.NuevaRedSocial(mRedSocial);
         }
     }
 }
