@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.btnItem = new System.Windows.Forms.Button();
-            this.lblItem = new System.Windows.Forms.Label();
             this.cbItem = new System.Windows.Forms.CheckBox();
+            this.tbItem = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnItem
@@ -46,21 +46,6 @@
             this.btnItem.UseVisualStyleBackColor = true;
             this.btnItem.Click += new System.EventHandler(this.btnItem_Click);
             // 
-            // lblItem
-            // 
-            this.lblItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblItem.AutoEllipsis = true;
-            this.lblItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblItem.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold);
-            this.lblItem.Location = new System.Drawing.Point(3, 151);
-            this.lblItem.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.lblItem.Name = "lblItem";
-            this.lblItem.Size = new System.Drawing.Size(194, 46);
-            this.lblItem.TabIndex = 1;
-            this.lblItem.Text = "CATEGORIA#";
-            this.lblItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
             // cbItem
             // 
             this.cbItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -74,13 +59,28 @@
             this.cbItem.Text = "Eliminar";
             this.cbItem.UseVisualStyleBackColor = true;
             // 
+            // tbItem
+            // 
+            this.tbItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbItem.Font = new System.Drawing.Font("Arial Black", 14F);
+            this.tbItem.Location = new System.Drawing.Point(3, 152);
+            this.tbItem.Margin = new System.Windows.Forms.Padding(1);
+            this.tbItem.Multiline = true;
+            this.tbItem.Name = "tbItem";
+            this.tbItem.ReadOnly = true;
+            this.tbItem.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbItem.Size = new System.Drawing.Size(194, 46);
+            this.tbItem.TabIndex = 3;
+            this.tbItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.Controls.Add(this.tbItem);
             this.Controls.Add(this.cbItem);
-            this.Controls.Add(this.lblItem);
             this.Controls.Add(this.btnItem);
             this.Name = "Item";
             this.Size = new System.Drawing.Size(200, 200);
@@ -93,7 +93,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnItem;
-        private System.Windows.Forms.Label lblItem;
         public System.Windows.Forms.CheckBox cbItem;
+        private System.Windows.Forms.TextBox tbItem;
     }
 }
