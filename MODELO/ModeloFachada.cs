@@ -212,6 +212,15 @@ namespace MODELO
 
         #region Buscar
         /// <summary>
+        /// Almacena una instancia de una busqueda
+        /// </summary>
+        public void CrearMotor(MotorBusqueda pUnMotor)
+        {
+            iUnidadDeTrabajo.RepositorioMotorBusqueda.Insert(pUnMotor);
+            iUnidadDeTrabajo.Save();
+        }
+
+        /// <summary>
         /// Obtiene un elemnto buscado
         /// </summary>
         /// <param name="pMotor"></param>

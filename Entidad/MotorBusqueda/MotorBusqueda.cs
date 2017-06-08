@@ -16,12 +16,12 @@ namespace ENTIDAD
         /// <summary>
         /// Direccion web a la que pertenece el Motor de Búsqueda
         /// </summary>
-        public Uri DireccionMotorBusqueda { get; set; }
+        public string DireccionMotorBusqueda { get; set; }
 
         /// <summary>
         /// String que explica el Tipo de Motor de Búsqueda
         /// </summary>
-        public string TipoMotorBusqueda { get; }
+        public string TipoMotorBusqueda { get; set; }
 
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace ENTIDAD
         /// <summary>
         /// Constructor
         /// </summary>
-        public MotorBusqueda(Uri pDireccion, string pTipo)
+        public MotorBusqueda(string pDireccion, string pTipo)
         {
             this.DireccionMotorBusqueda = pDireccion;
             this.TipoMotorBusqueda = pTipo;

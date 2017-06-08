@@ -13,11 +13,12 @@ namespace MODELO
         public DbSet<Archivo> Archivos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Entretenimiento> Entretenimientos { get; set; }
-        public DbSet<RedSocial> RedSocial { get; set; }
+        public DbSet<RedSocial> RedesSociales { get; set; }
+        public DbSet<MotorBusqueda> MotoresBusqueda { get; set; }
 
         public ContextoAPP() : base("BDEureK")
         {
-            //Database.SetInitializer<ContextoAPP>(new DropCreateDatabaseIfModelChanges<ContextoAPP>());
+            Database.SetInitializer<ContextoAPP>(new DropCreateDatabaseIfModelChanges<ContextoAPP>());
 
             var type = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
             if (type == null)

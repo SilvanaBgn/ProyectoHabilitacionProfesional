@@ -15,7 +15,7 @@ namespace Vista
     public partial class PruebaBD : Form
     {
         ControladorArchivo iControladorArchivo;
-        ControladorBuscar iControladorBuscar;
+        ControladorMotorBusqueda iControladorMotorBusqueda;
         ControladorEntretenimiento iControladorEntretenimiento;
         ControladorRedSocial iControladorRedSocial;
         ControladorUsuario iControladorUsuario;
@@ -24,7 +24,7 @@ namespace Vista
         {
             InitializeComponent();
             this.iControladorArchivo = new ControladorArchivo();
-            this.iControladorBuscar = new ControladorBuscar();
+            this.iControladorMotorBusqueda = new ControladorMotorBusqueda();
             this.iControladorEntretenimiento = new ControladorEntretenimiento();
             this.iControladorRedSocial = new ControladorRedSocial();
             this.iControladorUsuario = new ControladorUsuario();
@@ -32,19 +32,10 @@ namespace Vista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Usuario mUsuario = new Usuario("Juan", "123", "juan@gmail.com");
-            //Usuario mUsuario = this.iControladorUsuario.BuscarUsuario(1);
+            MotorBusqueda mMotor = new MotorBusqueda("https://www.youtube.com/results?search_query=", "video");
+            this.iControladorMotorBusqueda.NuevoMotorBusqueda(mMotor);
 
-            //RedSocial mRedSocial = new RedSocial("https://www.facebook.com/", "Facebook", "admin", "Juancitoo");
-
-            //mUsuario.ListRedesSociales.Remove(mUsuario.ListRedesSociales[1]);
-
-            ////this.iControladorUsuario.NuevoUsuario(mUsuario);
-            //this.iControladorUsuario.ModificarUsuario(mUsuario);
-            //this.iControladorRedSocial.EliminarRedSocial(2);
-            this.iControladorUsuario.EliminarUsuario(1);
-
-            //this.iControladorRedSocial.NuevaRedSocial(mRedSocial);
+            this.iControladorMotorBusqueda.Buscar("video", "marama");
         }
     }
 }
