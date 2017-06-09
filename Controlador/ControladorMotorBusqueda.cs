@@ -23,7 +23,10 @@ namespace CONTROLADOR
         public void Buscar(string pTipoMotor, string pCadenaABuscar)
         {
             MotorBusqueda mMotor=this.ObtenerMotor(pTipoMotor);
-            Process.Start(@"http://localhost/HabilitacionProfesional/index.php/API/buscar/"+mMotor.DireccionMotorBusqueda +"/"+ pCadenaABuscar);
+            string busqueda = mMotor.DireccionMotorBusqueda + pCadenaABuscar;
+            //Process.Start("http://localhost:81/HabilitacionProfesional/index.php/API/redireccionarA/"+variable);
+            Process.Start(busqueda);
+
         }
 
         /// <summary>

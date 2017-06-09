@@ -32,8 +32,8 @@ namespace Vista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MotorBusqueda mMotor = new MotorBusqueda("https://www.youtube.com/results?search_query=", "video");
-            this.iControladorMotorBusqueda.NuevoMotorBusqueda(mMotor);
+            //MotorBusqueda mMotor = new MotorBusqueda("www.youtube.com/results?search_query=", "video");
+            //this.iControladorMotorBusqueda.NuevoMotorBusqueda(mMotor);
 
             this.iControladorMotorBusqueda.Buscar("video", "marama");
         }
