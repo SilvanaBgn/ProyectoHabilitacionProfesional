@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CONTROLADOR;
+using ENTIDAD;
 
 namespace Vista
 {
@@ -50,58 +52,43 @@ namespace Vista
         private void CargarBarraLateral()
         {
             //Obtener lista de categorias laterales de base de datos
-            IList<ItemLateral> iCategoriasLaterales = new List<ItemLateral>();
-            ItemLateral cosavacia = new ItemLateral("Cosas Varias","formcosasvarias",false);
-            ItemLateral pornocatolicos = new ItemLateral("Porno para Católicos","formpornoparacatolicos",true);
-            ItemLateral fuentessabiduria = new ItemLateral("Fuentes de Sabiduria","formfuentesdesabiduria",false);
-            iCategoriasLaterales.Add(cosavacia);
-            iCategoriasLaterales.Add(pornocatolicos);
-            iCategoriasLaterales.Add(fuentessabiduria);
-            foreach (ItemLateral catLat in iCategoriasLaterales)
+            foreach (Categoria categoriaHuerfana in ControladorCategoria.ObtenerCategorias(true))
             {
-                catLat.Dock = DockStyle.Fill;
-                catLat.ItemLateralClicked += new EventHandler(ItemLateral_ButtonClicked);
-                this.tlpBarraLateral.Controls.Add(catLat);
+                //Crear item laterales
+                ItemLateral mNewItemLateral = new ItemLateral(categoriaHuerfana.NombreCategoria, categoriaHuerfana.CategoriaId,ControladorCategoria.EsPadre(categoriaHuerfana.CategoriaId));
+                //Cargarlo a la coleccion de controles
+                mNewItemLateral.Dock = DockStyle.Fill;
+                mNewItemLateral.ItemLateralClicked += new EventHandler(ItemLateral_ButtonClicked);
+                this.tlpBarraLateral.Controls.Add(mNewItemLateral);
             }
         }
 
-        private void CargarPanelDerecho(string pValorUnico)
+        private void CargarPanelDerecho(int pCategoriaId)
         {
             //vaciar panel derecho
             this.tlpTablaControles.Controls.Clear();
-            //obtener la lista de Items dependientes de este item por su valor unico.
-            IList<Item> iItems = new List<Item>();
-            Item cosavacia = new Item("Cosas Varias","formcosasvarias",null,false);
-            Item pornocatolicos = new Item("Porno para Católicos","formpornoparacatolicos",null,true);
-            Item pornocatolicos2 = new Item("Porno para Católicos", "formpornoparacatolicos", null, true);
-            Item pornocatolicos3 = new Item("Porno para Católicos", "formpornoparacatolicos", null, true);
-            Item fuentessabiduria = new Item("Fuentes de Sabiduria","formfuentesdesabiduria",null,false);
-            Item fuentessabiduria2 = new Item("Fuentes de Sabiduria", "formfuentesdesabiduria", null, false);
-            iItems.Add(cosavacia);
-            iItems.Add(pornocatolicos);
-            iItems.Add(pornocatolicos2);
-            iItems.Add(pornocatolicos3);
-            iItems.Add(fuentessabiduria);
-            iItems.Add(fuentessabiduria2);
-            //cargar nuevos items el panel derechoD
-            foreach (Item item in iItems)
+            foreach (Categoria categoria in ControladorCategoria.ObtenerCategoriasHijas(pCategoriaId))
             {
-                item.Anchor = AnchorStyles.Top;
-                item.ItemClicked += new EventHandler(Item_ButtonClicked);
-                this.tlpTablaControles.Controls.Add(item);
+                //Crear item
+                Item mNewItem = new Item(categoria.NombreCategoria, categoria.CategoriaId);
+                //Cargar nuevo item en el panel derecho
+                mNewItem.Anchor = AnchorStyles.Top;
+                mNewItem.ItemClicked += new EventHandler(Item_ButtonClicked);
+                this.tlpTablaControles.Controls.Add(mNewItem);
             }
         }
 
-        private void FormatearPanelDerecho(bool pModoFinal)
+        private void FormatearPanelDerecho(bool pEsPadre)
         {
-            //Modo final contiene los botones agregar y eliminar
+            bool mNoPadre = !pEsPadre;
+            //Sí un item NO es padre de categorías, contiene los botones agregar y eliminar.
             //En modo final se muestan los botones
-            this.btnAgregar.Visible = pModoFinal;
-            this.btnAgregar.Enabled = pModoFinal;
-            this.btnEliminar.Visible = pModoFinal;
-            this.btnEliminar.Enabled = pModoFinal;
+            this.btnAgregar.Visible = mNoPadre;
+            this.btnAgregar.Enabled = mNoPadre;
+            this.btnEliminar.Visible = mNoPadre;
+            this.btnEliminar.Enabled = mNoPadre;
             this.tlpTablaControles.Location = new Point(this.tlpBarraLateral.Right + 6, 0);
-            if (pModoFinal)
+            if (mNoPadre)
             {
                 this.tlpTablaControles.Width = this.Width - this.tlpBarraLateral.Width - this.btnAgregar.Width - 6 * 2;
             }
@@ -119,7 +106,7 @@ namespace Vista
             this.NombrePestaña = iClickedItemLateral.NombrePublico;
             //cambiar el contenido del panel derecho
             FormatearPanelDerecho(iClickedItemLateral.CategoriaDeCategorias);
-            CargarPanelDerecho(iClickedItemLateral.Valor);
+            CargarPanelDerecho(iClickedItemLateral.CategoriaId);
             //reactivar boton previamente desactivado
             foreach (ItemLateral mItemLateral in tlpBarraLateral.Controls)
             {
@@ -142,7 +129,7 @@ namespace Vista
             this.NombrePestaña = iClickedItem.NombrePublico;
             //cambiar el contenido del panel derecho, el parametro es true porque ya no puede haber más pantallas de categorias
             FormatearPanelDerecho(true);
-            CargarPanelDerecho(iClickedItem.Valor);
+            CargarPanelDerecho((int)iClickedItem.CategoriaId);
             //Llamar al evento para cambiar el nombre de la pestaña
             OnItemLateralClicked(e);
         }

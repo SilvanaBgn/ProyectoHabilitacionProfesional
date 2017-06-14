@@ -272,6 +272,39 @@ namespace MODELO
         {
             return iUnidadDeTrabajo.RepositorioCategoria.GetByID(pIdCategoria);
         }
+
+        /// <summary>
+        /// Obtiene una determinada categoria
+        /// </summary>
+        /// <param name="pTipoCategoria"></param>
+        /// <returns></returns>
+        public Categoria BuscarCategoria(TipoCategoria pTipoCategoria)
+        {
+            return iUnidadDeTrabajo.RepositorioCategoria.Get(cat => cat.NombreCategoria == pTipoCategoria.ToString()).FirstOrDefault() ;
+        }
+
+        /// <summary>
+        /// Obtiene todas las categorias
+        /// </summary>
+        /// <param name="pHuerfanas">Sí true, devuelve todas las categorías sin padre. Sino devuelve todas. Per defecto, false</param>
+        public ICollection<Categoria> ObtenerCategorias(bool pHuerfanas = false)
+        { 
+            IQueryable<Categoria> resultado = iUnidadDeTrabajo.RepositorioCategoria.Queryable;
+            if (pHuerfanas)
+            {
+                resultado = resultado.Where(cat => cat.CategoriaPadre == null);
+            }
+            return resultado.ToList();
+        }
+
+        /// <summary>
+        /// Obtiene todas las categorias hijas de una categoría específica
+        /// </summary>
+        /// <param name="pIdCategoriaPadre">Id de la categoria padre</param>
+        public ICollection<Categoria> ObtenerCategoriasHijas(int pIdCategoriaPadre)
+        {
+            return iUnidadDeTrabajo.RepositorioCategoria.Queryable.Where(cat => cat.CategoriaPadre.CategoriaId == pIdCategoriaPadre).ToList();
+        }
         #endregion
     }
 }

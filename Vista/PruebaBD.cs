@@ -32,10 +32,9 @@ namespace Vista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //MotorBusqueda mMotor = new MotorBusqueda("www.youtube.com/results?search_query=", "video");
-            //this.iControladorMotorBusqueda.NuevoMotorBusqueda(mMotor);
-
-            this.iControladorMotorBusqueda.Buscar("video", "marama");
+            //Usuario iUsuarioNuevo = new Usuario("David", "529225", "davidhotmail");
+            Categoria iCategoriaNueva = new Categoria(TipoCategoria.Imagenes,ControladorCategoria.BuscarCategoria(TipoCategoria.Archivos));
+            ControladorCategoria.NuevoCategoria(iCategoriaNueva);
         }
     }
 }

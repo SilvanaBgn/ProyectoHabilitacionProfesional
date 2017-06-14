@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControladorArchivo.cs" />
+    <Compile Include="ControladorCategoria.cs" />
     <Compile Include="ControladorMotorBusqueda.cs" />
     <Compile Include="ControladorBuscado.cs" />
     <Compile Include="ControladorEntretenimiento.cs" />

@@ -13,7 +13,7 @@ namespace Vista
     public partial class ItemLateral : UserControl
     {
         public string NombrePublico { get; set; }
-        public string Valor { get; set; }
+        public int CategoriaId { get; set; }
         public bool CategoriaDeCategorias { get; set; } = false;
 
         public ItemLateral()
@@ -21,7 +21,7 @@ namespace Vista
             InitializeComponent();
         }
 
-        public ItemLateral(string pNombrePublico, string pValor, bool pCategoriadeCategorias)
+        public ItemLateral(string pNombrePublico, int pCategoriaId, bool pCategoriadeCategorias)
         {
             InitializeComponent();
             if (pNombrePublico != null)
@@ -29,8 +29,7 @@ namespace Vista
                 NombrePublico = pNombrePublico;
                 this.btnItem.Text = pNombrePublico;
             }
-            if (pValor != null)
-                Valor = pValor;
+            CategoriaId = pCategoriaId;
             CategoriaDeCategorias = pCategoriadeCategorias;
         }
 

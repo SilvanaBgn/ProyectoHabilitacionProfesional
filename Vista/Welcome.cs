@@ -32,7 +32,7 @@ namespace Vista
                 //cambiar el color de fondo
                 this.tabControl.TabPages[lastIndex].BackColor = System.Drawing.Color.Silver;
                 //crear el contenido de la pestaña
-                Pestaña newPestaña = new Pestaña(false);
+                Pestaña newPestaña = new Pestaña(true);
                 //ajustar para rellenar
                 newPestaña.Dock = DockStyle.Fill;
                 //vincular el evento de click en un boton lateral que cambiará el nombre de la pestaña

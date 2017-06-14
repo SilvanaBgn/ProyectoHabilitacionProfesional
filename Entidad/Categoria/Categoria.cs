@@ -14,19 +14,19 @@ namespace ENTIDAD
         public int CategoriaId { get; set; }
 
         /// <summary>
+        /// Id con el que se identifica a la categoría
+        /// </summary>
+        public virtual Categoria CategoriaPadre { get; set; }
+
+        /// <summary>
         /// Nombre con el que se identifica a la categoría
         /// </summary>
         public string NombreCategoria { get; set; }
 
         /// <summary>
-        /// Tipo de categoría
-        /// </summary>
-        public TipoCategoria TipoCategoria { get; }
-
-        /// <summary>
         /// Lista de tutoriales pertenecientes a esta categoría
         /// </summary>
-        public virtual ICollection<Tutorial> ListaTutoriales{ get; set; }
+        public virtual List<Tutorial> ListaTutoriales{ get; set; }
 
 
         /// <summary>
@@ -37,10 +37,10 @@ namespace ENTIDAD
         /// <summary>
         /// Constructor de la clase
         /// </summary>
-        public Categoria(string pNombre, TipoCategoria pTipo)
+        public Categoria(TipoCategoria pTipo, Categoria pCategoriaPadre = null)
         {
-            this.NombreCategoria = pNombre;
-            this.TipoCategoria = pTipo;
+            this.NombreCategoria = pTipo.ToString();
+            this.CategoriaPadre = pCategoriaPadre;
             this.ListaTutoriales = new List<Tutorial>();
         }
 

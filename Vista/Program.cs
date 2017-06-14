@@ -16,8 +16,7 @@ namespace Vista
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new VentanaGenerica());
-            Application.Run(new PruebaBD());
+            Application.Run(new Welcome());
         }
     }
 }

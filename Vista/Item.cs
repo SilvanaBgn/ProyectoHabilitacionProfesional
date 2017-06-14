@@ -14,16 +14,12 @@ namespace Vista
     public partial class Item : UserControl
     {
         public String NombrePublico { get; set; }
-        public String Valor { get; set; }
-        public Image Icono { get; set; }
-        public bool EsCategoria { get; set; }
+        public int? CategoriaId { get; set; } = null;
+        public String Valor { get; set; } = null;
+        public Image Icono { get; set; } = null;
 
-        public Item()
-        {
-            InitializeComponent();
-        }
-
-        public Item(String pNombrePublico, string pValor, Image pIcono = null, bool pEsCategoria = false)
+        //contructor para items finales
+        public Item(String pNombrePublico, string pValor, Image pIcono = null)
         {
             InitializeComponent();
             if (pNombrePublico != null)
@@ -36,7 +32,18 @@ namespace Vista
             //this.AjustarLabel(this.lblItem);
             if (pIcono != null)
                 this.btnItem.Image = pIcono;
-            this.EsCategoria = pEsCategoria;
+        }
+
+        //contructor para items de categorias
+        public Item(String pNombrePublico, int pCategoriaId)
+        {
+            InitializeComponent();
+            if (pNombrePublico != null)
+            {
+                this.NombrePublico = pNombrePublico;
+                this.tbItem.Text = pNombrePublico;
+            }
+            this.CategoriaId = pCategoriaId;
         }
 
         private void Categoria_SizeChanged(object sender, EventArgs e)
@@ -83,19 +90,18 @@ namespace Vista
 
         private void btnItem_Click(object sender, EventArgs e)
         {
-            if (this.Valor != null)
+            if (this.CategoriaId != null)
             {
-                if (EsCategoria)
-                {
-                    onItemClicked(e);
-                }
-                else
-                {
-                    Process proc = new Process();
-                    proc.StartInfo.FileName = this.Valor;
-                    proc.Start();
-                }
+                onItemClicked(e);
             }
+            else if (this.Valor != null)
+            {
+                Process proc = new Process();
+                proc.StartInfo.FileName = this.Valor;
+                proc.Start();
+            }
+            else
+                MessageBox.Show("Algo anda mal");
         }
     }
 }

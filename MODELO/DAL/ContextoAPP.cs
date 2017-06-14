@@ -15,6 +15,7 @@ namespace MODELO
         public DbSet<Entretenimiento> Entretenimientos { get; set; }
         public DbSet<RedSocial> RedesSociales { get; set; }
         public DbSet<MotorBusqueda> MotoresBusqueda { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
 
         public ContextoAPP() : base("BDEureK")
         {
