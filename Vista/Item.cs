@@ -13,22 +13,42 @@ namespace Vista
 {
     public partial class Item : UserControl
     {
-        private String iRuta { get; set; }
+        public String NombrePublico { get; set; }
+        public int? CategoriaId { get; set; } = null;
+        public String Valor { get; set; } = null;
+        public Image Icono { get; set; } = null;
 
-        public Item(String pCatNombre, Image pCatIcono, String pRuta)
+        //contructor para items finales
+        public Item(String pNombrePublico, string pValor, Image pIcono = null)
         {
             InitializeComponent();
-            if (pRuta != null)
-                this.iRuta = pRuta;
-            this.lblItem.Text = pCatNombre;
-            this.AjustarLabel(this.lblItem);
-            if (pCatIcono!=null)
-                this.btnItem.Image = pCatIcono;
+            if (pNombrePublico != null)
+            { 
+                this.NombrePublico = pNombrePublico;
+                this.tbItem.Text = pNombrePublico;
+            }
+            if (pValor != null)
+                this.Valor = pValor;
+            //this.AjustarLabel(this.lblItem);
+            if (pIcono != null)
+                this.btnItem.Image = pIcono;
+        }
+
+        //contructor para items de categorias
+        public Item(String pNombrePublico, int pCategoriaId)
+        {
+            InitializeComponent();
+            if (pNombrePublico != null)
+            {
+                this.NombrePublico = pNombrePublico;
+                this.tbItem.Text = pNombrePublico;
+            }
+            this.CategoriaId = pCategoriaId;
         }
 
         private void Categoria_SizeChanged(object sender, EventArgs e)
         {
-            this.AjustarLabel(this.lblItem);
+            //this.AjustarLabel(this.lblItem);
         }
 
         /// <summary>
@@ -57,14 +77,31 @@ namespace Vista
             }
         }
 
+        public event EventHandler ItemClicked;
+
+        protected virtual void onItemClicked(EventArgs e)
+        {
+            var handler = ItemClicked;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        } 
+
         private void btnItem_Click(object sender, EventArgs e)
         {
-            if (this.iRuta != null)
+            if (this.CategoriaId != null)
+            {
+                onItemClicked(e);
+            }
+            else if (this.Valor != null)
             {
                 Process proc = new Process();
-                proc.StartInfo.FileName = iRuta;
+                proc.StartInfo.FileName = this.Valor;
                 proc.Start();
             }
+            else
+                MessageBox.Show("Algo anda mal");
         }
     }
 }

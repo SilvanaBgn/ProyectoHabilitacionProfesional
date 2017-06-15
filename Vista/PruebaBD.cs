@@ -15,7 +15,7 @@ namespace Vista
     public partial class PruebaBD : Form
     {
         ControladorArchivo iControladorArchivo;
-        ControladorBuscar iControladorBuscar;
+        ControladorMotorBusqueda iControladorMotorBusqueda;
         ControladorEntretenimiento iControladorEntretenimiento;
         ControladorRedSocial iControladorRedSocial;
         ControladorUsuario iControladorUsuario;
@@ -24,7 +24,7 @@ namespace Vista
         {
             InitializeComponent();
             this.iControladorArchivo = new ControladorArchivo();
-            this.iControladorBuscar = new ControladorBuscar();
+            this.iControladorMotorBusqueda = new ControladorMotorBusqueda();
             this.iControladorEntretenimiento = new ControladorEntretenimiento();
             this.iControladorRedSocial = new ControladorRedSocial();
             this.iControladorUsuario = new ControladorUsuario();
@@ -32,8 +32,9 @@ namespace Vista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //RedSocial mRedSocial = new RedSocial("https://www.facebook.com/","Facebook",);
-            //this.iControladorRedSocial
+            //Usuario iUsuarioNuevo = new Usuario("David", "529225", "davidhotmail");
+            Categoria iCategoriaNueva = new Categoria(TipoCategoria.Imagenes,ControladorCategoria.BuscarCategoria(TipoCategoria.Archivos));
+            ControladorCategoria.NuevoCategoria(iCategoriaNueva);
         }
     }
 }

@@ -48,7 +48,7 @@ namespace MODELO
         /// <param name="pUnArchivo"></param>
         public void EliminarArchivo(Archivo pUnArchivo)
         {
-            Archivo iArchivo = iUnidadDeTrabajo.RepositorioArchivo.GetByID(pUnArchivo.Id);
+            Archivo iArchivo = iUnidadDeTrabajo.RepositorioArchivo.GetByID(pUnArchivo.ArchivoId);
             iUnidadDeTrabajo.RepositorioArchivo.Delete(iArchivo);
             iUnidadDeTrabajo.Save();
         }
@@ -81,7 +81,7 @@ namespace MODELO
         /// <param name="pIdEntretenimiento">Id del entretenimiento</param>
         public void EliminarEntretenimiento(Entretenimiento pEntretenimiento)
         {
-            Entretenimiento iEntretenimiento = iUnidadDeTrabajo.RepositorioEntretenimiento.GetByID(pEntretenimiento.id);
+            Entretenimiento iEntretenimiento = iUnidadDeTrabajo.RepositorioEntretenimiento.GetByID(pEntretenimiento.EntretenimientoId);
             iUnidadDeTrabajo.RepositorioEntretenimiento.Delete(iEntretenimiento);
             iUnidadDeTrabajo.Save();
         }
@@ -114,7 +114,7 @@ namespace MODELO
         /// <param name="pIdRS">Id de la red social que se quiere eliminar</param>
         public void EliminarRedSocial(RedSocial pUnaRedSocial)
         {
-            RedSocial iRedSocial = iUnidadDeTrabajo.RepositorioRedSocial.GetByID(pUnaRedSocial.IdRedSocial);
+            RedSocial iRedSocial = iUnidadDeTrabajo.RepositorioRedSocial.GetByID(pUnaRedSocial.RedSocialId);
             iUnidadDeTrabajo.RepositorioRedSocial.Delete(iRedSocial);
             iUnidadDeTrabajo.Save();
         }
@@ -147,7 +147,7 @@ namespace MODELO
         /// <param name="pIdUSR">Id del usuario</param>
         public void EliminarUsuario(Usuario pUnUsuario)
         {
-            Usuario iUsuario = iUnidadDeTrabajo.RepositorioUsuario.GetByID(pUnUsuario.IdUsuario);
+            Usuario iUsuario = iUnidadDeTrabajo.RepositorioUsuario.GetByID(pUnUsuario.UsuarioId);
             iUnidadDeTrabajo.RepositorioUsuario.Delete(iUsuario);
             iUnidadDeTrabajo.Save();
         }
@@ -193,7 +193,7 @@ namespace MODELO
         /// <param name="pUnBuscado"></param>
         public void EliminarBuscado(Buscado pUnBuscado)
         {
-            Buscado iBuscado = iUnidadDeTrabajo.RepositorioBuscado.GetByID(pUnBuscado.Id);
+            Buscado iBuscado = iUnidadDeTrabajo.RepositorioBuscado.GetByID(pUnBuscado.BuscadoId);
             iUnidadDeTrabajo.RepositorioBuscado.Delete(pUnBuscado);
             iUnidadDeTrabajo.Save();
         }
@@ -212,13 +212,22 @@ namespace MODELO
 
         #region Buscar
         /// <summary>
+        /// Almacena una instancia de una busqueda
+        /// </summary>
+        public void CrearMotor(MotorBusqueda pUnMotor)
+        {
+            iUnidadDeTrabajo.RepositorioMotorBusqueda.Insert(pUnMotor);
+            iUnidadDeTrabajo.Save();
+        }
+
+        /// <summary>
         /// Obtiene un elemnto buscado
         /// </summary>
         /// <param name="pMotor"></param>
         /// <returns>Motor de búsqueda requerido</returns>
         public MotorBusqueda ObtenerMotor(string pTipoMotor)
         {
-            List<MotorBusqueda> mLista=((List<MotorBusqueda>)iUnidadDeTrabajo.RepositorioMotorBusqueda.Get(x=>x.Tipo==pTipoMotor));
+            List<MotorBusqueda> mLista=((List<MotorBusqueda>)iUnidadDeTrabajo.RepositorioMotorBusqueda.Get(x=>x.TipoMotorBusqueda==pTipoMotor));
             MotorBusqueda mMotor;
             if (mLista.Count > 0)
             {
@@ -249,7 +258,7 @@ namespace MODELO
         /// <param name="pUnaCategoria"></param>
         public void EliminarCategoria(Categoria pUnaCategoria)
         {
-            Categoria iCategoria = iUnidadDeTrabajo.RepositorioCategoria.GetByID(pUnaCategoria.Id);
+            Categoria iCategoria = iUnidadDeTrabajo.RepositorioCategoria.GetByID(pUnaCategoria.CategoriaId);
             iUnidadDeTrabajo.RepositorioCategoria.Delete(pUnaCategoria);
             iUnidadDeTrabajo.Save();
         }
@@ -262,6 +271,39 @@ namespace MODELO
         public Categoria BuscarCategoria(int pIdCategoria)
         {
             return iUnidadDeTrabajo.RepositorioCategoria.GetByID(pIdCategoria);
+        }
+
+        /// <summary>
+        /// Obtiene una determinada categoria
+        /// </summary>
+        /// <param name="pTipoCategoria"></param>
+        /// <returns></returns>
+        public Categoria BuscarCategoria(TipoCategoria pTipoCategoria)
+        {
+            return iUnidadDeTrabajo.RepositorioCategoria.Get(cat => cat.NombreCategoria == pTipoCategoria.ToString()).FirstOrDefault() ;
+        }
+
+        /// <summary>
+        /// Obtiene todas las categorias
+        /// </summary>
+        /// <param name="pHuerfanas">Sí true, devuelve todas las categorías sin padre. Sino devuelve todas. Per defecto, false</param>
+        public ICollection<Categoria> ObtenerCategorias(bool pHuerfanas = false)
+        { 
+            IQueryable<Categoria> resultado = iUnidadDeTrabajo.RepositorioCategoria.Queryable;
+            if (pHuerfanas)
+            {
+                resultado = resultado.Where(cat => cat.CategoriaPadre == null);
+            }
+            return resultado.ToList();
+        }
+
+        /// <summary>
+        /// Obtiene todas las categorias hijas de una categoría específica
+        /// </summary>
+        /// <param name="pIdCategoriaPadre">Id de la categoria padre</param>
+        public ICollection<Categoria> ObtenerCategoriasHijas(int pIdCategoriaPadre)
+        {
+            return iUnidadDeTrabajo.RepositorioCategoria.Queryable.Where(cat => cat.CategoriaPadre.CategoriaId == pIdCategoriaPadre).ToList();
         }
         #endregion
     }

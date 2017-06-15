@@ -16,7 +16,7 @@ namespace CONTROLADOR
         /// <param name="pRedSocial">Red social a crear</param>
         public void NuevaRedSocial(RedSocial pRedSocial)
         {
-            ModeloFachada.GetInstancia().CrearRedSocial(pRedSocial);
+            (ModeloFachada.GetInstancia()).CrearRedSocial(pRedSocial);
         }
 
         /// <summary>

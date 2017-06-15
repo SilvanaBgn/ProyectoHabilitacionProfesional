@@ -32,7 +32,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,6 +60,18 @@
     <Compile Include="Item.designer.cs">
       <DependentUpon>Item.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemLateral.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemLateral.Designer.cs">
+      <DependentUpon>ItemLateral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pestaña.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pestaña.Designer.cs">
+      <DependentUpon>Pestaña.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PruebaBD.cs">
@@ -59,14 +80,20 @@
     <Compile Include="PruebaBD.Designer.cs">
       <DependentUpon>PruebaBD.cs</DependentUpon>
     </Compile>
-    <Compile Include="VentanaGenerica.cs">
+    <Compile Include="Welcome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VentanaGenerica.designer.cs">
-      <DependentUpon>VentanaGenerica.cs</DependentUpon>
+    <Compile Include="Welcome.designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Item.resx">
       <DependentUpon>Item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemLateral.resx">
+      <DependentUpon>ItemLateral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pestaña.resx">
+      <DependentUpon>Pestaña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,9 +107,10 @@
     <EmbeddedResource Include="PruebaBD.resx">
       <DependentUpon>PruebaBD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VentanaGenerica.resx">
-      <DependentUpon>VentanaGenerica.cs</DependentUpon>
+    <EmbeddedResource Include="Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,9 +123,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controlador\Controlador.csproj">

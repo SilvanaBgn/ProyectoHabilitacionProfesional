@@ -11,47 +11,31 @@ namespace ENTIDAD
         /// <summary>
         /// Codigo numerico que identifica al Motor de Búsqueda
         /// </summary>
-        private int idMotorBusqueda;
+        public int MotorBusquedaId { get; set; }
 
         /// <summary>
         /// Direccion web a la que pertenece el Motor de Búsqueda
         /// </summary>
-        private Uri iDireccionMotorBusqueda;
+        public string DireccionMotorBusqueda { get; set; }
 
         /// <summary>
         /// String que explica el Tipo de Motor de Búsqueda
         /// </summary>
-        private string iTipoMotorBusqueda;
+        public string TipoMotorBusqueda { get; set; }
 
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public MotorBusqueda(Uri pDireccion, string pTipo)
+        public MotorBusqueda() { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public MotorBusqueda(string pDireccion, string pTipo)
         {
-            this.iDireccionMotorBusqueda = pDireccion;
-            this.iTipoMotorBusqueda = pTipo;
+            this.DireccionMotorBusqueda = pDireccion;
+            this.TipoMotorBusqueda = pTipo;
         }
-
-
-
-        #region Properties
-        public int id
-        {
-            get { return this.idMotorBusqueda; }
-            set { this.idMotorBusqueda = value; }
-        }
-
-        public Uri Direccion
-        {
-            get { return this.iDireccionMotorBusqueda; }
-            set { this.iDireccionMotorBusqueda = value; }
-        }
-
-        public string Tipo
-        {
-            get { return this.iTipoMotorBusqueda; }
-        }
-        #endregion
     }
 }

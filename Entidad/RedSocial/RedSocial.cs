@@ -11,76 +11,53 @@ namespace ENTIDAD
         /// <summary>
         /// Identificación única del la red social
         /// </summary>
-        private int idRedSocial;
-        
+        public int RedSocialId { get; set; }
+
         /// <summary>
         /// Dirección Uri de la red social
         /// </summary>
-        private Uri iDireccionRedSocial;
+        public string DireccionRedSocial { get; set; }
 
         /// <summary>
         /// Nombre de la cuenta de usuario de la red social
         /// </summary>
-        private string iNombreCuenta;
+        public string NombreCuenta { get; set; }
 
         /// <summary>
         /// Clave de la cuenta de usuario de la red social
         /// </summary>
-        private string iClaveCuenta;
+        public string ClaveCuenta { get; set; }
 
         /// <summary>
         /// Nombre de la red social que se quiere guardar
         /// </summary>
-        private string iNombreRedSocial;
+        public string NombreRedSocial { get; set; }
 
         /// <summary>
         /// ID del Usuario 
         /// </summary>
         public int UsuarioId { get; set; }
 
+        /// <summary>
+        /// Objeto Usuario
+        /// </summary>
+        //public virtual Usuario Usuario { get; set; }
+
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public RedSocial(Uri pDir, string pNomCuenta, string pClaveCuenta, string pNomRS)
-        {
-            this.iDireccionRedSocial = pDir;
-            this.iNombreCuenta = pNomCuenta;
-            this.iClaveCuenta = pClaveCuenta;
-            this.iNombreRedSocial = pNomRS;
-        }
+        public RedSocial() { }
 
-        #region Properties
-        public string NombreCuenta
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public RedSocial(string pDir, string pNomCuenta, string pClaveCuenta, string pNomRS)
         {
-            get { return this.iNombreCuenta; }
-            set { this.iNombreCuenta = value; }
+            this.DireccionRedSocial = pDir;
+            this.NombreCuenta = pNomCuenta;
+            this.ClaveCuenta = pClaveCuenta;
+            this.NombreRedSocial = pNomRS;
         }
-
-        public string ClaveCuenta
-        {
-            get { return this.iClaveCuenta; }
-            set { this.iClaveCuenta = value; }
-        }
-
-        public string NombreRedSocial
-        {
-            get { return this.iNombreRedSocial; }
-            set { this.iNombreRedSocial = value; }
-        }
-
-        public Uri DireccionRedSocial
-        {
-            get { return this.iDireccionRedSocial; }
-            set { this.iDireccionRedSocial = value; }
-        }
-
-        public int IdRedSocial
-        {
-            get { return this.idRedSocial; }
-            set { this.idRedSocial = value; }
-        }
-
-        #endregion
     }
 }

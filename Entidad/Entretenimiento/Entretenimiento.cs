@@ -10,17 +10,17 @@ namespace ENTIDAD
         /// <summary>
         /// Codigo numerico que identifica al entretenimiento
         /// </summary>
-        private int idEntretenimiento;
+        public int EntretenimientoId { get; set; }
 
         /// <summary>
         /// Direccion web a la que pertenece el entretenimiento
         /// </summary>
-        private Uri iDireccionEntretenimiento;
+        public string DireccionEntretenimiento { get; set; }
 
         /// <summary>
         /// Tipo de entretenimiento
         /// </summary>
-        private TipoEntretenimiento iTipoEntretenimiento;
+        public TipoEntretenimiento TipoEntretenimiento { get; }
 
         /// <summary>
         /// ID del Usuario 
@@ -28,32 +28,23 @@ namespace ENTIDAD
         public int UsuarioId { get; set; }
 
         /// <summary>
+        /// Objeto Usuario
+        /// </summary>
+        //public virtual Usuario Usuario { get; set; }
+
+
+        /// <summary>
         /// Constructor
         /// </summary>
-        public Entretenimiento(Uri pDireccion, TipoEntretenimiento pTipo)
-        {
-            this.iDireccionEntretenimiento = pDireccion;
-            this.iTipoEntretenimiento = pTipo;
-        }
+        public Entretenimiento() { }
 
-        #region Properties
-        public int id
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Entretenimiento(string pDireccion, TipoEntretenimiento pTipo)
         {
-            get { return this.idEntretenimiento; }
-            set { this.idEntretenimiento = value; }
+            this.DireccionEntretenimiento = pDireccion;
+            this.TipoEntretenimiento = pTipo;
         }
-
-        public Uri Direccion
-        {
-            get { return this.iDireccionEntretenimiento; }
-            set { this.iDireccionEntretenimiento = value; }
-        }
-
-        public TipoEntretenimiento Tipo
-        {
-            get { return this.iTipoEntretenimiento; }
-        }
-        #endregion
-
     }
 }

@@ -8,19 +8,40 @@ namespace ENTIDAD
 {
     public class Categoria
     {
-        private int idCategoria;
-        private string iNombreCategoria;
-        private TipoCategoria iTipoCategoria;
-        private List<Tutorial> iListaTutoriales;
-        
+        /// <summary>
+        /// Id con el que se identifica a la categoría
+        /// </summary>
+        public int CategoriaId { get; set; }
+
+        /// <summary>
+        /// Id con el que se identifica a la categoría
+        /// </summary>
+        public virtual Categoria CategoriaPadre { get; set; }
+
+        /// <summary>
+        /// Nombre con el que se identifica a la categoría
+        /// </summary>
+        public string NombreCategoria { get; set; }
+
+        /// <summary>
+        /// Lista de tutoriales pertenecientes a esta categoría
+        /// </summary>
+        public virtual List<Tutorial> ListaTutoriales{ get; set; }
+
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Categoria() { }
+
         /// <summary>
         /// Constructor de la clase
         /// </summary>
-        public Categoria(string pNombre, TipoCategoria pTipo)
+        public Categoria(TipoCategoria pTipo, Categoria pCategoriaPadre = null)
         {
-            this.iNombreCategoria = pNombre;
-            this.iTipoCategoria = pTipo;
-            this.iListaTutoriales = new List<Tutorial>();
+            this.NombreCategoria = pTipo.ToString();
+            this.CategoriaPadre = pCategoriaPadre;
+            this.ListaTutoriales = new List<Tutorial>();
         }
 
         #region Métodos
@@ -30,8 +51,8 @@ namespace ENTIDAD
         /// <param name="pRutaTutorial">Ruta al archivo tutorial</param>
         public void AgregarTutorial(string pRutaTutorial)
         {
-            if (this.iListaTutoriales.Exists(x => x.RutaTutorial != pRutaTutorial))
-                this.iListaTutoriales.Add(new Tutorial(pRutaTutorial));
+            if (this.ListaTutoriales.ToList().Exists(x => x.RutaTutorial != pRutaTutorial))
+                this.ListaTutoriales.Add(new Tutorial(pRutaTutorial));
         }
 
         /// <summary>
@@ -52,25 +73,6 @@ namespace ENTIDAD
             //Hacer
         }
         
-        #endregion
-
-        #region Properties
-        public int Id
-        {
-            get { return this.idCategoria; }
-            set { this.idCategoria = value; }
-        }
-
-        public string NombreCategoria
-        {
-            get { return this.iNombreCategoria; }
-            set { this.iNombreCategoria = value; }
-        }
-
-        public TipoCategoria Tipo
-        {
-            get { return this.iTipoCategoria; }
-        }
         #endregion
     }
 }

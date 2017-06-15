@@ -11,23 +11,28 @@ namespace ENTIDAD
         /// <summary>
         /// Id con el que se identifica al archivo
         /// </summary>
-        private int idArchivo;
+        public int ArchivoId { get; set; }
 
         /// <summary>
         /// String que representa la ruta del archivo
         /// </summary>
-        private string iRutaArchivo;
+        public string RutaArchivo { get; set; }
 
         /// <summary>
         /// Fecha en que se modificó el archivo
         /// </summary>
-        private DateTime iFechaModificado;
+        public DateTime FechaModificado { get; set; }
 
         /// <summary>
         /// Tipo del archivo
         /// </summary>
-        private TipoArchivo iTipoArchivo;
+        public TipoArchivo TipoArchivo { get; }
 
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Archivo(){ }
 
         /// <summary>
         /// Constructor
@@ -36,38 +41,9 @@ namespace ENTIDAD
         /// <param name="pFechaBuscado">fecha de modificación del archivo</param>
         public Archivo(string pRuta,DateTime pFecha, TipoArchivo pTipo)
         {
-            this.iRutaArchivo = pRuta;
-            this.iFechaModificado = pFecha;
-            this.iTipoArchivo = pTipo;
+            this.RutaArchivo = pRuta;
+            this.FechaModificado = pFecha;
+            this.TipoArchivo = pTipo;
         }
-
-
-        #region Properties
-        /// <summary>
-        /// Propiedad de lectura y escritura de la id de la busqueda
-        /// </summary>
-        public int Id
-        {
-            get { return this.idArchivo; }
-            set { this.idArchivo = value; }
-        }
-        
-        /// <summary>
-        /// Propiedad de lectura y escritura de la fecha de la busqueda
-        /// </summary>
-        public DateTime FechaBuscado
-        {
-            get { return this.iFechaModificado; }
-            set { this.iFechaModificado = value;}
-        }
-
-        /// <summary>
-        /// Propiedad de lectura del tipo del archivo
-        /// </summary>
-        public TipoArchivo Tipo
-        {
-            get { return this.iTipoArchivo; }
-        }
-        #endregion
     }
 }
